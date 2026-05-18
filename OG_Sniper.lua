@@ -1,4 +1,4 @@
--- OG Sniper Full Fixed Version
+-- OG Sniper Full Working Version for GitHub
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -132,21 +132,35 @@ function createSelectionScreen()
     end
 end
 
--- Active Sniper + Spawn functions (same as your working version)
+-- Active Sniper
 function startActiveSniper(sniperName)
     if mainFrame then mainFrame:Destroy() end
-    -- ... (I'll keep it short for now, but use your previous working code for this part)
-    print("Active sniper started: " .. sniperName)
-end
+    mainFrame = Instance.new("Frame")
+    mainFrame.Size = isMobile and UDim2.new(0.95, 0, 0.92, 0) or UDim2.new(0.7, 0, 0.85, 0)
+    mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    mainFrame.BackgroundColor3 = Color3.fromRGB(15, 0, 35)
+    mainFrame.Parent = screenGui
+    Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 16)
 
-function addFakeSpawn(parent, sniperName)
-    print("Spawned: " .. sniperName)
-end
+    local header = Instance.new("TextLabel")
+    header.Size = UDim2.new(1, 0, 0.1, 0)
+    header.BackgroundTransparency = 1
+    header.Text = "ACTIVE: " .. sniperName
+    header.TextColor3 = Color3.fromRGB(0, 255, 200)
+    header.TextScaled = true
+    header.Font = Enum.Font.GothamBold
+    header.Parent = mainFrame
 
--- Start
-createLoadingScreen("Og Sniper Loading", 13, function()
-    createToggleButton()
-    createSelectionScreen()
-end)
+    local scrolling = Instance.new("ScrollingFrame")
+    scrolling.Size = UDim2.new(1, -20, 0.68, 0)
+    scrolling.Position = UDim2.new(0, 10, 0.13, 0)
+    scrolling.BackgroundTransparency = 0.7
+    scrolling.ScrollBarThickness = 8
+    scrolling.Parent = mainFrame
+    Instance.new("UIListLayout", scrolling).Padding = UDim.new(0, 10)
 
-print("OG Sniper Loaded Successfully!")
+    local btnFrame = Instance.new("Frame")
+    btnFrame.Size = UDim2.new(1, -20, 0.12, 0)
+    btnFrame.Position = UDim2.new(0, 10, 0.83, 0)
+    btnFrame.BackgroundTransparency =
