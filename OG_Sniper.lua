@@ -1,4 +1,4 @@
-- OG Sniper - Toggle Button After First Load + Mobile Optimized
+G Sniper - Toggle Button After First Load + Mobile Optimized
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
